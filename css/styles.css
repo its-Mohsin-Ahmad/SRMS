@@ -532,10 +532,13 @@ svg{display:block;}
 }
 .navbar-left{display:flex;align-items:center;gap:14px;min-width:0;}
 .hamburger{
-  width:40px;height:40px;border-radius:11px;display:none;place-items:center;flex-shrink:0;
-  background:var(--blue-light);color:var(--blue-dark);font-size:15px;transition:all var(--t) var(--ease);
+  display:none;place-items:center;flex-shrink:0;
+  background:var(--surface);border:1px solid var(--border-strong);
+  color:var(--blue);font-size:16px;transition:all var(--t-fast) var(--ease);
+  box-shadow:var(--shadow-sm);width:40px;height:40px;border-radius:10px;
 }
-.hamburger:hover{background:var(--blue-light-2);}
+.hamburger:hover{background:var(--blue-light);border-color:var(--blue);color:var(--blue-dark);}
+.hamburger:active{transform:scale(.92);}
 .navbar-titles{min-width:0;}
 .page-title{font-size:18.5px;font-weight:700;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .breadcrumb{display:flex;align-items:center;gap:7px;font-size:11.7px;color:var(--text-mute);margin-top:1px;}
@@ -607,9 +610,6 @@ svg{display:block;}
 .avatar-md{width:42px;height:42px;font-size:15px;}
 .avatar-lg{width:60px;height:60px;font-size:21px;}
 .avatar-xl{width:104px;height:104px;font-size:36px;}
-
-.sidebar-overlay.show{opacity:1;visibility:visible;}
-
 
 /* ---------- 10. DROPDOWN PANELS ---------- */
 .dropdown-anchor{position:relative;}

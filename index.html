@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SRMS - Student Result Management System for universities and colleges">
+<title>SRMS - Student Result Management System</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ============ LOADING SCREEN ============ -->
+<div id="loading-screen" class="loading-screen">
+  <div class="loader-content">
+    <div class="loader-logo"><i class="fas fa-graduation-cap"></i></div>
+    <h2>SRMS</h2>
+    <p>Student Result Management System</p>
+    <div class="loader-bar"><div class="loader-progress"></div></div>
+  </div>
+</div>
+
+<!-- ============ AUTH / LOGIN ============ -->
+<div id="login-page" class="auth-page">
+  <div class="auth-shell">
+    <div class="auth-visual">
+      <div class="auth-visual-inner">
+        <div class="auth-brand">
+          <div class="auth-brand-logo"><i class="fas fa-graduation-cap"></i></div>
+          <div>
+            <h1>SRMS</h1>
+            <p>Student Result Management System</p>
+          </div>
+        </div>
+        <h2 class="auth-headline">Academic excellence,<br>measured and managed.</h2>
+        <p class="auth-sub">One secure portal for results, attendance, exams, assignments and analytics &mdash; for students, faculty and administration.</p>
+        <ul class="auth-features">
+          <li><i class="fas fa-circle-check"></i> Real-time result &amp; GPA tracking</li>
+          <li><i class="fas fa-circle-check"></i> Attendance monitoring with alerts</li>
+          <li><i class="fas fa-circle-check"></i> Role-based secure access</li>
+          <li><i class="fas fa-circle-check"></i> Analytics for every department</li>
+        </ul>
+        <div class="auth-stats">
+          <div class="auth-stat"><strong>2,450</strong><span>Students</span></div>
+          <div class="auth-stat"><strong>145</strong><span>Faculty</span></div>
+          <div class="auth-stat"><strong>12</strong><span>Departments</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="auth-form-side">
+      <div class="auth-form-wrap">
+        <div class="auth-form-head">
+          <h3>Welcome back</h3>
+          <p>Sign in to continue to your dashboard</p>
+        </div>
+
+        <div class="role-selector" role="tablist" aria-label="Select login role">
+          <button type="button" class="role-btn active" data-role="student" role="tab" aria-selected="true">
+            <i class="fas fa-user-graduate"></i><span>Student</span>
+          </button>
+          <button type="button" class="role-btn" data-role="teacher" role="tab" aria-selected="false">
+            <i class="fas fa-chalkboard-user"></i><span>Teacher</span>
+          </button>
+          <button type="button" class="role-btn" data-role="admin" role="tab" aria-selected="false">
+            <i class="fas fa-user-shield"></i><span>Admin</span>
+          </button>
+        </div>
+
+        <form id="login-form" class="auth-form" novalidate>
+          <div class="form-group">
+            <label for="login-email" id="login-id-label">Email or Student ID</label>
+            <div class="input-wrap">
+              <i class="fas fa-envelope input-icon"></i>
+              <input type="text" id="login-email" name="email" autocomplete="username"
+                     placeholder="student@university.edu" aria-describedby="login-email-error">
+            </div>
+            <span class="field-error" id="login-email-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <div class="input-wrap">
+              <i class="fas fa-lock input-icon"></i>
+              <input type="password" id="login-password" name="password" autocomplete="current-password"
+                     placeholder="Enter your password" aria-describedby="login-password-error">
+              <button type="button" class="input-suffix-btn" id="toggle-password" aria-label="Show password">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+            <span class="field-error" id="login-password-error"></span>
+          </div>
+
+          <div class="form-row-between">
+            <label class="checkbox-label">
+              <input type="checkbox" id="remember-me">
+              <span class="checkbox-box"><i class="fas fa-check"></i></span>
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="link-primary" id="forgot-password">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="login-submit">
+            <span class="btn-label">Sign In</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+
+          <div class="demo-accounts">
+            <span class="demo-title">Quick demo login</span>
+            <div class="demo-chips">
+              <button type="button" class="demo-chip" data-demo="student"><i class="fas fa-user-graduate"></i> Student</button>
+              <button type="button" class="demo-chip" data-demo="teacher"><i class="fas fa-chalkboard-user"></i> Teacher</button>
+              <button type="button" class="demo-chip" data-demo="admin"><i class="fas fa-user-shield"></i> Admin</button>
+            </div>
+          </div>
+        </form>
+
+        <p class="auth-footer">Protected by role-based access control &middot; SRMS v2.0</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD SHELL ============ -->
+<div id="app-shell" class="app-shell" hidden>
+
+  <div id="sidebar-overlay" class="sidebar-overlay" tabindex="-1"></div>
+
+  <aside id="sidebar" class="sidebar" aria-label="Main navigation">
+    <div class="sidebar-head">
+      <div class="sidebar-logo" id="sidebar-logo"><i class="fas fa-graduation-cap"></i></div>
+      <div class="sidebar-brand-text">
+        <strong>SRMS</strong>
+        <small>Student Result<br>Management System</small>
+      </div>
+      <button class="sidebar-collapse" id="sidebar-collapse" aria-label="Collapse sidebar" title="Collapse sidebar">
+        <i class="fas fa-angles-left"></i>
+      </button>
+    </div>
+
+    <div class="sidebar-user">
+      <div class="avatar avatar-md" id="sidebar-avatar"></div>
+      <div class="sidebar-user-meta">
+        <strong id="sidebar-user-name">User</strong>
+        <span id="sidebar-user-role">Role</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebar-nav" aria-label="Sections"></nav>
+
+    <div class="sidebar-foot">
+      <button class="sidebar-logout" id="sidebar-logout">
+        <i class="fas fa-right-from-bracket"></i><span>Logout</span>
+      </button>
+      <div class="sidebar-version">SRMS v2.0 &middot; University Build</div>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="navbar" id="navbar">
+      <div class="navbar-left">
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
+        <div class="navbar-titles">
+          <h1 class="page-title" id="page-title">Dashboard</h1>
+          <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb"></nav>
+        </div>
+      </div>
+
+      <div class="navbar-search">
+        <i class="fas fa-search"></i>
+        <input type="text" id="global-search" placeholder="Search students, courses, results, notices..."
+               autocomplete="off" aria-label="Global search" aria-expanded="false" aria-controls="search-results">
+        <kbd>Ctrl</kbd><kbd>K</kbd>
+        <div class="search-panel" id="search-results" hidden></div>
+      </div>
+
+      <div class="navbar-right">
+        <button class="icon-btn" id="density-btn" aria-label="Toggle compact density" title="Toggle compact density">
+          <i class="fas fa-table-cells-large"></i>
+        </button>
+        <div class="dropdown-anchor">
+          <button class="icon-btn" id="messages-btn" aria-label="Messages" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-comment-dots"></i><span class="badge-dot" id="messages-count">2</span>
+          </button>
+          <div class="dropdown-panel dropdown-sm" id="messages-panel" hidden>
+            <div class="dropdown-head"><strong>Recent Messages</strong><button class="link-btn" data-goto="messages">View all</button></div>
+            <div class="dropdown-body" id="messages-panel-body"></div>
+          </div>
+        </div>
+        <div class="dropdown-anchor">
+          <button class="icon-btn" id="notifications-btn" aria-label="Notifications" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bell"></i><span class="badge-dot" id="notifications-count">3</span>
+          </button>
+          <div class="dropdown-panel dropdown-md" id="notifications-panel" hidden>
+            <div class="dropdown-head"><strong>Notifications</strong><button class="link-btn" id="mark-all-read">Mark all read</button></div>
+            <div class="dropdown-tabs" id="notif-tabs">
+              <button class="drop-tab active" data-filter="all">All</button>
+              <button class="drop-tab" data-filter="Results">Results</button>
+              <button class="drop-tab" data-filter="Exams">Exams</button>
+              <button class="drop-tab" data-filter="Attendance">Attendance</button>
+              <button class="drop-tab" data-filter="Notices">Notices</button>
+            </div>
+            <div class="dropdown-body" id="notifications-panel-body"></div>
+            <div class="dropdown-foot"><button class="link-btn" data-goto="notifications-center">Open notification center</button></div>
+          </div>
+        </div>
+        <div class="dropdown-anchor">
+          <button class="profile-trigger" id="profile-trigger" aria-haspopup="true" aria-expanded="false">
+            <div class="avatar avatar-sm" id="navbar-avatar"></div>
+            <div class="profile-trigger-meta">
+              <strong id="navbar-user-name">User</strong>
+              <span id="navbar-user-role">Role</span>
+            </div>
+            <i class="fas fa-chevron-down caret"></i>
+          </button>
+          <div class="dropdown-panel dropdown-sm" id="profile-panel" hidden>
+            <div class="profile-panel-head">
+              <div class="avatar avatar-md" id="panel-avatar"></div>
+              <div><strong id="panel-user-name">User</strong><span id="panel-user-email">user@university.edu</span></div>
+            </div>
+            <div class="dropdown-list">
+              <button class="dropdown-item" data-goto="profile"><i class="fas fa-user"></i> My Profile</button>
+              <button class="dropdown-item" data-goto="settings"><i class="fas fa-sliders"></i> Settings</button>
+              <button class="dropdown-item" id="open-change-password"><i class="fas fa-key"></i> Change Password</button>
+              <button class="dropdown-item" data-goto="notifications-center"><i class="fas fa-bell"></i> Notifications</button>
+            </div>
+            <div class="dropdown-list dropdown-list-danger">
+              <button class="dropdown-item danger" id="logout-btn"><i class="fas fa-right-from-bracket"></i> Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content" id="main-content" tabindex="-1"></main>
+  </div>
+</div>
+
+<div class="toast-stack" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+<div class="modal-root" id="modal-root"></div>
+
+
+<script src="js/data/demoData.js"></script>
+<script src="js/data/academicData.js"></script>
+<script src="js/data/resultsData.js"></script>
+<script src="js/data/operationsData.js"></script>
+<script src="js/data/timetableData.js"></script>
+<script src="js/data/portalData.js"></script>
+<script src="js/data/communicationData.js"></script>
+<script src="js/data/analyticsData.js"></script>
+<script src="js/data/index.js"></script>
+<script src="js/utils/helpers.js"></script>
+<script src="js/utils/charts.js"></script>
+<script src="js/components/uiComponents.js"></script>
+<script src="js/components/sidebar.js"></script>
+<script src="js/components/navbar.js"></script>
+<script src="js/config/router.js"></script>
+<script src="js/pages/shared.js"></script>
+<script src="js/pages/extra.js"></script>
+<script src="js/pages/profiles.js"></script>
+<script src="js/pages/student/dashboard.js"></script>
+<script src="js/pages/student/profile.js"></script>
+<script src="js/pages/student/courses.js"></script>
+<script src="js/pages/student/results.js"></script>
+<script src="js/pages/student/attendance.js"></script>
+<script src="js/pages/student/exams.js"></script>
+<script src="js/pages/student/timetable.js"></script>
+<script src="js/pages/student/notices.js"></script>
+<script src="js/pages/student/assignments.js"></script>
+<script src="js/pages/student/library.js"></script>
+<script src="js/pages/student/messages.js"></script>
+<script src="js/pages/student/feedback.js"></script>
+<script src="js/pages/student/downloads.js"></script>
+<script src="js/pages/teacher/dashboard.js"></script>
+<script src="js/pages/teacher/students.js"></script>
+<script src="js/pages/teacher/results.js"></script>
+<script src="js/pages/teacher/attendance.js"></script>
+<script src="js/pages/teacher/exams.js"></script>
+<script src="js/pages/teacher/reports.js"></script>
+<script src="js/pages/admin/dashboard.js"></script>
+<script src="js/pages/admin/students.js"></script>
+<script src="js/pages/admin/teachers.js"></script>
+<script src="js/pages/admin/courses.js"></script>
+<script src="js/pages/admin/departments.js"></script>
+<script src="js/pages/admin/exams.js"></script>
+<script src="js/pages/admin/notices.js"></script>
+<script src="js/pages/admin/users.js"></script>
+<script src="js/pages/admin/reports.js"></script>
+<script src="js/pages/admin/auditLogs.js"></script>
+<script src="js/pages/admin/settings.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

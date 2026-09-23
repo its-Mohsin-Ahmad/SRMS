@@ -1410,7 +1410,7 @@ svg{display:block;}
   .page-head-actions{width:100%;}
   .page-head-actions .btn{flex:1;}
 
-  .table-wrap{display:none;}
+  .table-wrap:has(~ .table-cards){display:none;}
   .table-cards{display:block;}
   .pagination{justify-content:center;}
   .table-toolbar{flex-direction:column;align-items:stretch;}
@@ -1648,6 +1648,89 @@ svg{display:block;}
   .reg-verify .actions{flex-direction:column;}
   .reg-nav{flex-direction:column-reverse;}
   .reg-nav .btn,#reg-back{width:100%;}
+}
+
+/* ==========================================================================
+   33. MASTER RESPONSIVE LAYER  (spec breakpoints 320 → 1536+)
+   Tiers 1280 / 1024 / 899 / 640 / 400 are kept for compatibility; this adds
+   iPhone safe-area, fluid typography, small-phone, large-desktop & landscape.
+   ========================================================================== */
+
+/* --- iPhone safe area: notch / Dynamic Island / home indicator (§56) --- */
+.navbar{
+  padding-left:calc(14px + env(safe-area-inset-left));
+  padding-right:calc(14px + env(safe-area-inset-right));
+}
+.toast-stack{top:calc(16px + env(safe-area-inset-top));}
+@media (max-width:899px){
+  .sidebar{padding-top:env(safe-area-inset-top);}
+  .content{padding-bottom:calc(34px + env(safe-area-inset-bottom));}
+  .dropdown-panel{padding-bottom:env(safe-area-inset-bottom);}
+}
+
+/* --- Fluid responsive typography (§4) --- */
+.page-head-txt h2{font-size:clamp(18px,1.2vw + 12px,21px);}
+.hero-greet{font-size:clamp(20px,1.6vw + 13px,28px);}
+.stat-value{font-size:clamp(23px,1.4vw + 17px,27px);}
+.page-title{font-size:clamp(15.6px,1vw + 12px,18.5px);}
+.auth-form-head h3{font-size:clamp(23px,1.6vw + 14px,27px);}
+.auth-headline{font-size:clamp(31px,3vw + 18px,42px);}
+
+/* --- Large desktop ≥1536: centered max-width content (§3) --- */
+@media (min-width:1536px){
+  .content{max-width:1760px;margin-inline:auto;width:100%;}
+}
+
+/* --- Large mobile ≤479 --- */
+@media (max-width:479px){
+  .content{padding:14px 14px 28px;}
+  .navbar{height:60px;padding:0 12px;}
+  .card{padding:15px;}
+  .grid-stats{grid-template-columns:repeat(auto-fit,minmax(140px,1fr));}
+  .page-head-txt h2{font-size:18px;}
+}
+
+/* --- Small phone 320–374 (§1) --- */
+@media (max-width:374px){
+  .content{padding:12px 12px 24px;}
+  .navbar{height:58px;padding:0 10px;}
+  .card{padding:13px;border-radius:12px;}
+  .card-hero{padding:16px;}
+  .grid-stats,.stat-mini-strip,.quick-grid,.kpi-strip,.resource-grid,.data-card-grid{grid-template-columns:minmax(0,1fr);}
+  .btn{padding:11px 14px;font-size:13px;}
+  .modal-body{padding:16px;}
+  .stat-value{font-size:22px;}
+  .hero-greet{font-size:19px;}
+}
+
+/* --- Mobile landscape (§59): shorten chrome, keep content usable --- */
+@media (orientation:landscape) and (max-height:520px){
+  .navbar{height:52px;}
+  .hero-art{height:84px;font-size:38px;}
+  .card-hero{padding:18px 20px;}
+  .toast-stack{top:10px;}
+}
+/* --- Touch-friendly targets on touch-sized viewports (§58) --- */
+@media (max-width:899px){
+  .nav-item,.tab,.role-btn,.drop-tab,.demo-chip,.page-btn,.att-btn,.dropdown-item{min-height:44px;}
+  .icon-action,.input-suffix-btn,.modal-close,.hamburger,.sidebar-collapse{min-width:42px;min-height:42px;}
+  .cal-day{min-height:46px;}
+  .checkbox-box{width:22px;height:22px;}
+}
+
+/* --- Media & charts never break layout (§2, §54, §61) --- */
+img,video,canvas{max-width:100%;}
+img{height:auto;}
+.avatar{flex-shrink:0;}
+.chart-h-240,.chart-h-260,.chart-h-280,.chart-h-300,.chart-h-340,.chart-h-380,.chart-h-420{max-width:100%;}
+
+/* --- Viewport-safe overlays: modal / dropdown (§48, §49, §52) --- */
+.modal{max-height:min(92vh,92dvh);}
+@media (max-width:640px){
+  .modal{width:calc(100vw - 24px);max-height:calc(100dvh - 24px);}
+}
+@media (max-width:899px){
+  .dropdown-panel{max-width:calc(100vw - 24px);}
 }
 @media (max-width:640px){
   .mk-input{width:60px;font-size:12px;padding:6px;}

@@ -1436,7 +1436,28 @@ svg{display:block;}
   .resource-grid{grid-template-columns:minmax(0,1fr);}
   .data-card-grid{grid-template-columns:minmax(0,1fr);}
   .kpi-strip{grid-template-columns:repeat(2,1fr);}
-  .msg-bubble-wrap{max-width:92%;}
+    .msg-bubble-wrap{max-width:92%;}
+  /* Messaging — mobile refinement (899px query already stacks the panes) */
+  .messages-layout{min-height:420px;}
+  .msg-sidebar-head{padding:12px 14px;}
+  .msg-sidebar-head .tabs{gap:4px;}
+  .msg-sidebar-head .tab{font-size:12.4px;padding:8px 2px;}
+  .msg-list{max-height:280px;}
+  .msg-thread{padding:11px 13px;gap:9px;}
+  .msg-thread-top{gap:6px;}
+  .msg-thread-top strong{font-size:12.6px;}
+  .msg-thread-subject{font-size:11.7px;}
+  .msg-thread-preview{font-size:10.9px;}
+  .msg-thread .avatar-sm{width:34px;height:34px;font-size:11px;}
+  .msg-view-head{padding:13px 15px;}
+  .msg-view-head .action-group{gap:6px;}
+  .msg-view-body{padding:15px;max-height:calc(100vh - 340px);}
+  .msg-bubble{font-size:12.8px;line-height:1.58;padding:11px 14px;}
+  .msg-bubble time{font-size:9.8px;}
+  .msg-compose{padding:12px 15px;gap:8px;}
+  .msg-compose textarea{font-size:13.2px;padding:11px 13px;}
+  .msg-compose .btn{flex-shrink:0;}
+  .msg-compose .btn-primary{padding:9px 13px;}
 
   /* Login page — mobile single-column */
   .auth-shell{grid-template-columns:minmax(0,1fr);}

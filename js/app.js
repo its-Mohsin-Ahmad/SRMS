@@ -177,7 +177,7 @@
   /* --------------------------------------------------------------- LOGIN UI */
   function initLogin() {
     var form = document.getElementById('login-form');
-    var roleBtns = U.qsa('.role-btn');
+    var roleBtns = U.qsa('#login-page .role-btn');
     var idLabel = document.getElementById('login-id-label');
     var emailInput = document.getElementById('login-email');
     var prefs = U.getPrefs();

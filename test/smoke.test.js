@@ -46,7 +46,7 @@ const files = [
   'js/data/demoData.js','js/data/academicData.js','js/data/resultsData.js',
   'js/data/operationsData.js','js/data/timetableData.js','js/data/portalData.js',
   'js/data/communicationData.js','js/data/analyticsData.js','js/data/index.js',
-  'js/utils/helpers.js','js/utils/charts.js','js/components/uiComponents.js',
+  'js/utils/helpers.js','js/utils/charts.js','js/components/uiComponents.js','js/components/register.js',
   'js/components/sidebar.js','js/components/navbar.js','js/config/router.js','js/pages/shared.js','js/pages/extra.js',
   'js/pages/profiles.js',
   'js/pages/student/dashboard.js','js/pages/student/profile.js','js/pages/student/courses.js',

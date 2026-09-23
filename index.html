@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="SRMS - Student Result Management System for universities and colleges">
 <title>SRMS - Student Result Management System</title>
-    <link rel="stylesheet" href="css/styles.css?v=6">
+    <link rel="stylesheet" href="css/styles.css?v=7">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
@@ -118,7 +118,163 @@
           </div>
         </form>
 
+        <p class="reg-alt">Don't have an account? <a href="#" class="link-primary" id="goto-register">Create Account</a></p>
+
         <p class="auth-footer">Protected by role-based access control &middot; SRMS v2.0</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ AUTH / REGISTER ============ -->
+<div id="register-page" class="auth-page" style="display:none">
+  <div class="auth-shell auth-shell--register">
+    <div class="auth-visual">
+      <div class="auth-shape sh1" aria-hidden="true"></div>
+      <div class="auth-shape sh2" aria-hidden="true"></div>
+      <div class="auth-shape sh3" aria-hidden="true"></div>
+      <div class="auth-visual-inner">
+        <div class="auth-brand">
+          <div class="auth-brand-logo"><i class="fas fa-graduation-cap"></i></div>
+          <div><h1>SRMS</h1><p>Student Result Management System</p></div>
+        </div>
+        <h2 class="auth-headline">Better Learning &bull;<br>Better Results &bull;<br>Brighter Future</h2>
+        <p class="auth-sub">Create your academic account and manage your educational journey from one place.</p>
+        <ul class="auth-features">
+          <li><i class="fas fa-circle-check"></i> Track results, GPA &amp; attendance in real time</li>
+          <li><i class="fas fa-circle-check"></i> Submit assignments, exams &amp; feedback online</li>
+          <li><i class="fas fa-circle-check"></i> Secure role-based access for every user</li>
+        </ul>
+        <div class="reg-illust" aria-hidden="true">
+          <div class="tile"><i class="fas fa-graduation-cap"></i> Students</div>
+          <div class="tile"><i class="fas fa-book-open"></i> Courses</div>
+          <div class="tile"><i class="fas fa-chart-line"></i> Analytics</div>
+          <div class="tile"><i class="fas fa-certificate"></i> Results</div>
+        </div>
+        <div class="auth-stats">
+          <div class="auth-stat"><strong>2,450</strong><span>Students</span></div>
+          <div class="auth-stat"><strong>145</strong><span>Faculty</span></div>
+          <div class="auth-stat"><strong>12</strong><span>Departments</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-form-side">
+      <div class="auth-form-wrap reg-wrap">
+        <div class="reg-brand">
+          <div class="reg-brand-logo"><i class="fas fa-graduation-cap"></i></div>
+          <div><h1>SRMS</h1><p>Student Result Management System</p></div>
+        </div>
+        <div class="auth-form-head">
+          <h3>Create Your Account</h3>
+          <p>Register to access your academic portal.</p>
+        </div>
+
+        <ol class="reg-steps" aria-label="Registration progress">
+          <li class="reg-step active" data-step="1" aria-current="step"><span class="reg-step-num">01</span><span class="reg-step-label">Personal Information</span></li>
+          <li class="reg-step" data-step="2"><span class="reg-step-num">02</span><span class="reg-step-label">Academic Information</span></li>
+          <li class="reg-step" data-step="3"><span class="reg-step-num">03</span><span class="reg-step-label">Account Security</span></li>
+        </ol>
+
+        <div class="role-selector role-selector--2" role="radiogroup" aria-label="Account type">
+          <button type="button" class="role-btn active" data-atype="student" role="radio" aria-checked="true"><i class="fas fa-user-graduate"></i><span>Student</span></button>
+          <button type="button" class="role-btn" data-atype="teacher" role="radio" aria-checked="false"><i class="fas fa-chalkboard-user"></i><span>Teacher</span></button>
+        </div>
+        <p class="reg-admin-note"><i class="fas fa-shield-halved"></i><span>Admin accounts cannot be self-registered &mdash; they are created only by an authorized administrator.</span></p>
+
+        <form id="register-form" class="auth-form" novalidate>
+          <!-- STEP 1 -->
+          <section class="reg-panel active" data-panel="1" aria-label="Personal Information">
+            <div class="reg-fields" data-for="student">
+              <div class="form-group"><label for="rg-first">First Name</label><div class="input-wrap"><i class="fas fa-user input-icon"></i><input type="text" id="rg-first" placeholder="Enter first name" autocomplete="given-name" aria-describedby="rg-first-err"></div><span class="field-error" id="rg-first-err"></span></div>
+              <div class="form-group"><label for="rg-last">Last Name</label><div class="input-wrap"><i class="fas fa-user input-icon"></i><input type="text" id="rg-last" placeholder="Enter last name" autocomplete="family-name" aria-describedby="rg-last-err"></div><span class="field-error" id="rg-last-err"></span></div>
+              <div class="form-group"><label for="rg-sid">Student ID</label><div class="input-wrap"><i class="fas fa-id-card input-icon"></i><input type="text" id="rg-sid" placeholder="Enter Student ID" aria-describedby="rg-sid-err"></div><span class="field-error" id="rg-sid-err"></span></div>
+              <div class="form-group"><label for="rg-email">Email Address</label><div class="input-wrap"><i class="fas fa-envelope input-icon"></i><input type="email" id="rg-email" placeholder="Enter your email" autocomplete="email" aria-describedby="rg-email-err"></div><span class="field-error" id="rg-email-err"></span></div>
+              <div class="form-group"><label for="rg-phone">Phone Number</label><div class="input-wrap"><i class="fas fa-phone input-icon"></i><input type="tel" id="rg-phone" placeholder="Enter phone number" autocomplete="tel" aria-describedby="rg-phone-err"></div><span class="field-error" id="rg-phone-err"></span></div>
+              <div class="form-group"><label for="rg-dob">Date of Birth</label><div class="input-wrap"><i class="fas fa-calendar input-icon"></i><input type="date" id="rg-dob" aria-describedby="rg-dob-err"></div><span class="field-error" id="rg-dob-err"></span></div>
+              <div class="form-group"><label for="rg-gender">Gender</label><div class="input-wrap no-icon"><select id="rg-gender" aria-describedby="rg-gender-err"><option value="">Select gender</option><option>Male</option><option>Female</option><option>Other</option></select></div><span class="field-error" id="rg-gender-err"></span></div>
+            </div>
+
+            <div class="reg-fields" data-for="teacher" hidden>
+              <div class="form-group full"><label for="rg-tname">Full Name</label><div class="input-wrap"><i class="fas fa-user input-icon"></i><input type="text" id="rg-tname" placeholder="Enter your full name" autocomplete="name" aria-describedby="rg-tname-err"></div><span class="field-error" id="rg-tname-err"></span></div>
+              <div class="form-group"><label for="rg-tid">Teacher ID</label><div class="input-wrap"><i class="fas fa-id-card input-icon"></i><input type="text" id="rg-tid" placeholder="Enter Teacher ID" aria-describedby="rg-tid-err"></div><span class="field-error" id="rg-tid-err"></span></div>
+              <div class="form-group"><label for="rg-temail">Email Address</label><div class="input-wrap"><i class="fas fa-envelope input-icon"></i><input type="email" id="rg-temail" placeholder="Enter your email" autocomplete="email" aria-describedby="rg-temail-err"></div><span class="field-error" id="rg-temail-err"></span></div>
+              <div class="form-group"><label for="rg-tphone">Phone Number</label><div class="input-wrap"><i class="fas fa-phone input-icon"></i><input type="tel" id="rg-tphone" placeholder="Enter phone number" autocomplete="tel" aria-describedby="rg-tphone-err"></div><span class="field-error" id="rg-tphone-err"></span></div>
+            </div>
+          </section>
+          <!-- STEP 2 -->
+          <section class="reg-panel" data-panel="2" aria-label="Academic Information">
+            <div class="reg-fields" data-for="student">
+              <div class="form-group"><label for="rg-dept">Department</label><div class="input-wrap no-icon"><select id="rg-dept" aria-describedby="rg-dept-err"><option value="">Select Department</option><option>Computer Science</option><option>Software Engineering</option><option>Electrical Engineering</option><option>Civil Engineering</option><option>Business Administration</option><option>Mathematics</option></select></div><span class="field-error" id="rg-dept-err"></span></div>
+              <div class="form-group"><label for="rg-program">Program</label><div class="input-wrap no-icon"><select id="rg-program" aria-describedby="rg-program-err"><option value="">Select Program</option><option>BS Software Engineering</option><option>BS Computer Science</option><option>BS Electrical Engineering</option><option>BS Civil Engineering</option><option>BBA</option><option>BS Mathematics</option></select></div><span class="field-error" id="rg-program-err"></span></div>
+              <div class="form-group"><label for="rg-semester">Semester</label><div class="input-wrap no-icon"><select id="rg-semester" aria-describedby="rg-semester-err"><option value="">Select Semester</option><option>1st Semester</option><option>2nd Semester</option><option>3rd Semester</option><option>4th Semester</option><option>5th Semester</option><option>6th Semester</option><option>7th Semester</option><option>8th Semester</option></select></div><span class="field-error" id="rg-semester-err"></span></div>
+              <div class="form-group"><label for="rg-section">Section</label><div class="input-wrap no-icon"><select id="rg-section"><option>A</option><option>B</option><option>C</option><option>D</option></select></div><span class="field-error" id="rg-section-err"></span></div>
+              <div class="form-group"><label for="rg-batch">Batch</label><div class="input-wrap no-icon"><select id="rg-batch"><option>2025-2029</option><option>2024-2028</option><option>2023-2027</option><option>2022-2026</option><option>2021-2025</option></select></div><span class="field-error" id="rg-batch-err"></span></div>
+              <div class="form-group"><label for="rg-session">Academic Session</label><div class="input-wrap no-icon"><select id="rg-session"><option>2025-2026</option><option>2024-2025</option><option>2023-2024</option></select></div><span class="field-error" id="rg-session-err"></span></div>
+            </div>
+
+            <div class="reg-fields" data-for="teacher" hidden>
+              <div class="form-group"><label for="rg-tdept">Department</label><div class="input-wrap no-icon"><select id="rg-tdept" aria-describedby="rg-tdept-err"><option value="">Select Department</option><option>Computer Science</option><option>Software Engineering</option><option>Electrical Engineering</option><option>Civil Engineering</option><option>Business Administration</option><option>Mathematics</option></select></div><span class="field-error" id="rg-tdept-err"></span></div>
+              <div class="form-group"><label for="rg-designation">Designation</label><div class="input-wrap no-icon"><select id="rg-designation" aria-describedby="rg-designation-err"><option value="">Select Designation</option><option>Professor</option><option>Associate Professor</option><option>Assistant Professor</option><option>Lecturer</option></select></div><span class="field-error" id="rg-designation-err"></span></div>
+              <div class="form-group"><label for="rg-qualification">Qualification</label><div class="input-wrap no-icon"><select id="rg-qualification" aria-describedby="rg-qualification-err"><option value="">Select Qualification</option><option>PhD</option><option>MS / MPhil</option><option>BS</option><option>M.Ed</option></select></div><span class="field-error" id="rg-qualification-err"></span></div>
+              <div class="form-group"><label for="rg-joindate">Joining Date</label><div class="input-wrap"><i class="fas fa-calendar input-icon"></i><input type="date" id="rg-joindate" aria-describedby="rg-joindate-err"></div><span class="field-error" id="rg-joindate-err"></span></div>
+            </div>
+
+            <div data-for="student">
+              <div class="reg-subhead">Address Information</div>
+              <div class="reg-fields">
+                <div class="form-group"><label for="rg-country">Country</label><div class="input-wrap no-icon"><select id="rg-country"><option>Pakistan</option><option>India</option><option>Bangladesh</option><option>United Arab Emirates</option><option>United States</option></select></div></div>
+                <div class="form-group"><label for="rg-province">Province / State</label><div class="input-wrap no-icon"><select id="rg-province"><option>Sindh</option><option>Punjab</option><option>KPK</option><option>Balochistan</option><option>Islamabad Capital Territory</option></select></div></div>
+                <div class="form-group"><label for="rg-city">City</label><div class="input-wrap"><i class="fas fa-city input-icon"></i><input type="text" id="rg-city" placeholder="Enter city"></div></div>
+                <div class="form-group full"><label for="rg-address">Address</label><div class="input-wrap"><i class="fas fa-location-dot input-icon"></i><input type="text" id="rg-address" placeholder="Street address, area"></div></div>
+              </div>
+            </div>
+          </section>
+          <!-- STEP 3 -->
+          <section class="reg-panel" data-panel="3" aria-label="Account Security">
+            <div class="reg-note" data-for="teacher" hidden><i class="fas fa-circle-info"></i><span>Teacher accounts may require administrator approval before access is granted.</span></div>
+            <div class="reg-fields">
+              <div class="form-group full"><label for="rg-pw">Password</label><div class="input-wrap"><i class="fas fa-lock input-icon"></i><input type="password" id="rg-pw" placeholder="Enter password" autocomplete="new-password" aria-describedby="rg-pw-err"><button type="button" class="input-suffix-btn" data-toggle-pw="rg-pw" aria-label="Show password"><i class="fas fa-eye"></i></button></div><span class="field-error" id="rg-pw-err"></span></div>
+              <div class="form-group full"><label for="rg-pw2">Confirm Password</label><div class="input-wrap"><i class="fas fa-lock input-icon"></i><input type="password" id="rg-pw2" placeholder="Confirm password" autocomplete="new-password" aria-describedby="rg-pw2-err"><button type="button" class="input-suffix-btn" data-toggle-pw="rg-pw2" aria-label="Show password"><i class="fas fa-eye"></i></button></div><span class="field-error" id="rg-pw2-err"></span></div>
+            </div>
+            <div class="pw-wrap">
+              <div class="pw-meter"><div class="pw-bar"><span id="pw-fill"></span></div></div>
+              <div class="pw-meta"><span>Password strength</span><span class="pw-label" id="pw-label">&mdash;</span></div>
+              <ul class="pw-req" aria-label="Password requirements">
+                <li id="req-len"><i class="fas fa-check"></i> At least 8 characters</li>
+                <li id="req-upper"><i class="fas fa-check"></i> One uppercase letter</li>
+                <li id="req-lower"><i class="fas fa-check"></i> One lowercase letter</li>
+                <li id="req-num"><i class="fas fa-check"></i> One number</li>
+                <li id="req-spec"><i class="fas fa-check"></i> One special character</li>
+              </ul>
+            </div>
+            <div class="form-group" style="margin-top:16px">
+              <label class="checkbox-label reg-terms"><input type="checkbox" id="rg-terms" aria-describedby="rg-terms-err"><span class="checkbox-box"><i class="fas fa-check"></i></span><span>I agree to the <a href="#" id="rg-terms-link">Terms &amp; Conditions</a> and <a href="#" id="rg-privacy-link">Privacy Policy</a>.</span></label>
+              <span class="field-error" id="rg-terms-err"></span>
+            </div>
+          </section>
+
+          <div class="reg-nav">
+            <button type="button" class="btn btn-outline" id="reg-back" hidden><i class="fas fa-arrow-left"></i> Back</button>
+            <button type="button" class="btn btn-primary" id="reg-next">Continue <i class="fas fa-arrow-right"></i></button>
+            <button type="submit" class="btn btn-primary btn-lg" id="reg-submit" hidden><span class="btn-label">Create Account</span><i class="fas fa-arrow-right"></i></button>
+          </div>
+        </form>
+
+        <p class="reg-login-link">Already have an account? <a href="#" class="link-primary" id="goto-login">Login</a></p>
+        <p class="auth-footer">Secure registration &middot; Role-based access &middot; SRMS v2.0</p>
+
+        <div class="reg-verify" id="reg-verify" hidden>
+          <div class="reg-verify-ico"><i class="fas fa-envelope-circle-check"></i></div>
+          <h3>Verify Your Email</h3>
+          <p class="sub">We've sent a verification link to your email address.</p>
+          <div class="mail"><i class="fas fa-envelope"></i> <span id="verify-email">you@university.edu</span></div>
+          <div class="actions">
+            <button type="button" class="btn btn-primary" id="reg-resend" disabled><i class="fas fa-paper-plane"></i> <span id="resend-label">Resend in 30s</span></button>
+            <button type="button" class="btn btn-outline" id="verify-login"><i class="fas fa-arrow-left"></i> Back to Login</button>
+          </div>
+          <p class="resend">Didn't get it? Check your spam folder or resend the email.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -257,6 +413,7 @@
 <script src="js/utils/helpers.js"></script>
 <script src="js/utils/charts.js"></script>
 <script src="js/components/uiComponents.js"></script>
+<script src="js/components/register.js?v=1"></script>
 <script src="js/components/sidebar.js?v=5"></script>
 <script src="js/components/navbar.js"></script>
 <script src="js/config/router.js"></script>

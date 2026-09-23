@@ -153,6 +153,8 @@
     if (!sb) return;
     sb.classList.add('drawer-open');
     if (ov) ov.classList.add('show');
+    var ham = document.getElementById('hamburger');
+    if (ham) ham.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
     var first = sb.querySelector('.nav-item');
     if (first) first.focus();
@@ -160,6 +162,8 @@
 
   function closeDrawer() {
     var sb = document.getElementById('sidebar'), ov = document.getElementById('sidebar-overlay');
+    var ham = document.getElementById('hamburger');
+    if (ham) ham.setAttribute('aria-expanded', 'false');
     if (sb) sb.classList.remove('drawer-open');
     if (ov) ov.classList.remove('show');
     document.body.style.overflow = '';
@@ -170,7 +174,7 @@
     return !!sb && sb.classList.contains('drawer-open');
   }
 
-  function isMobile() { return window.matchMedia('(max-width: 900px)').matches; }
+  function isMobile() { return window.matchMedia('(max-width: 899px)').matches; }
 
   function init(role, onNavigate) {
     var nav = document.getElementById('sidebar-nav');
@@ -207,8 +211,20 @@
       if (e.key === 'Escape' && isDrawerOpen()) closeDrawer();
     });
 
-    window.addEventListener('resize', U.debounce(function () {
-      if (!isMobile()) closeDrawer();
+        window.addEventListener('resize', U.debounce(function () {
+      if (isMobile()) {
+        var sb = document.getElementById('sidebar');
+        if (sb) sb.classList.remove('collapsed');
+        var ov = document.getElementById('sidebar-overlay');
+        if (ov) ov.classList.remove('show');
+        closeDrawer();
+        var ham = document.getElementById('hamburger');
+        if (ham) ham.setAttribute('aria-expanded', 'false');
+      }
+      else {
+        if (!isMobile()) closeDrawer();
+        applyCollapse(isCollapsed());
+      }
     }, 160));
 
     /* Restore desktop collapse preference */

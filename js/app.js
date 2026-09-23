@@ -104,12 +104,12 @@
     if (global.SRMS_NAVBAR) global.SRMS_NAVBAR.init(user.role, user, go);
 
     var logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) logoutBtn.addEventListener('click', logout);
+    if (logoutBtn) logoutBtn.onclick = logout;
     var sideLogout = document.getElementById('sidebar-logout');
-    if (sideLogout) sideLogout.addEventListener('click', logout);
+    if (sideLogout) sideLogout.onclick = logout;
 
     var chpw = document.getElementById('open-change-password');
-    if (chpw) chpw.addEventListener('click', function () { UI.closeDropdowns && UI.closeDropdowns(); openChangePassword(); });
+    if (chpw) chpw.onclick = function () { UI.closeDropdowns && UI.closeDropdowns(); openChangePassword(); };
 
     go(ROLE_DEFAULT_PAGE[user.role]);
     setTimeout(function () {

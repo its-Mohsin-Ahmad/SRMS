@@ -506,7 +506,9 @@ svg{display:block;}
 .sidebar-logout i{width:20px;text-align:center;font-size:14px;flex-shrink:0;}
 .sidebar-version{font-size:10.2px;color:var(--text-mute);text-align:center;padding:8px 4px 2px;white-space:nowrap;overflow:hidden;}
 
-/* Collapsed sidebar — smooth label fade */
+/* Collapsed sidebar — tight icon rail.
+   display:none strips every pixel of dead space from hidden labels/cards so
+   the icons line up evenly (opacity:0/width:0 left invisible height). */
 .sidebar.collapsed{width:var(--sidebar-w-collapsed);}
 .sidebar.collapsed .sidebar-brand-text,
 .sidebar.collapsed .sidebar-user-meta,
@@ -514,17 +516,18 @@ svg{display:block;}
 .sidebar.collapsed .nav-label,
 .sidebar.collapsed .nav-tag,
 .sidebar.collapsed .sidebar-logout span,
-.sidebar.collapsed .sidebar-version{
-  opacity:0;width:0;overflow:hidden;transition:opacity var(--t-fast) var(--ease),width var(--t-fast) var(--ease);
-}
-.sidebar.collapsed .sidebar-head{justify-content:center;padding:16px 10px 36px;position:relative;}
-.sidebar.collapsed .sidebar-logo{margin:0 auto;}
-.sidebar.collapsed .sidebar-user{justify-content:center;padding:14px 8px;margin:8px 10px 6px;opacity:0;width:0;overflow:hidden;}
-.sidebar.collapsed .nav-item{justify-content:center;padding:11px 8px;}
-.sidebar.collapsed .nav-item .nav-ico{width:auto;font-size:16px;}
-.sidebar.collapsed .sidebar-logout{justify-content:center;padding:11px 8px;opacity:0;width:0;overflow:hidden;}
-.sidebar.collapsed .sidebar-logout i{font-size:16px;}
 .sidebar.collapsed .sidebar-version{display:none;}
+.sidebar.collapsed .sidebar-user{display:none;}
+.sidebar.collapsed .sidebar-head{justify-content:center;padding:16px 10px 38px;position:relative;}
+.sidebar.collapsed .sidebar-logo{margin:0 auto;}
+.sidebar.collapsed .sidebar-nav{padding:8px 8px 16px;}
+.sidebar.collapsed .nav-section{margin-top:8px;}
+.sidebar.collapsed .nav-section:first-child{margin-top:4px;}
+.sidebar.collapsed .nav-item{justify-content:center;padding:11px 8px;gap:0;margin-bottom:0;}
+.sidebar.collapsed .nav-item .nav-ico{width:auto;font-size:16px;}
+.sidebar.collapsed .sidebar-logout{justify-content:center;padding:11px 8px;gap:0;}
+.sidebar.collapsed .sidebar-logout i{font-size:16px;}
+.sidebar.collapsed .sidebar-collapse{z-index:12;}
 
 /* MAIN WRAPPER */
 .main-wrapper{flex:1;min-width:0;margin-left:var(--sidebar-w);display:flex;flex-direction:column;transition:margin-left var(--t) var(--ease);}
@@ -1341,21 +1344,26 @@ svg{display:block;}
     transition:transform var(--t-slow) var(--ease);
   }
   .sidebar.drawer-open{transform:translateX(0);}
-    .sidebar.collapsed{width:280px;}
+        .sidebar.collapsed{width:280px;}
+  /* Drawer mode: "collapsed" only shrinks the width; show every label again. */
   .sidebar.collapsed .sidebar-brand-text,
   .sidebar.collapsed .sidebar-user-meta,
   .sidebar.collapsed .nav-section-title,
-  .sidebar.collapsed .nav-label,
-  .sidebar.collapsed .nav-tag,
   .sidebar.collapsed .sidebar-logout span,
-  .sidebar.collapsed .sidebar-version{opacity:1;width:auto;overflow:visible;}
+  .sidebar.collapsed .sidebar-version{display:block;}
+  .sidebar.collapsed .nav-label{display:block;}
+  .sidebar.collapsed .nav-tag{display:inline-block;}
+  .sidebar.collapsed .sidebar-user,
+  .sidebar.collapsed .sidebar-logout{display:flex;}
+  .sidebar.collapsed .sidebar-user{justify-content:flex-start;padding:16px 18px;margin:12px 12px 6px;}
   .sidebar.collapsed .sidebar-head{justify-content:space-between;padding:20px 18px;}
   .sidebar.collapsed .sidebar-collapse{display:none;}
-    .sidebar.collapsed .sidebar-user{justify-content:flex-start;padding:16px 18px;margin:12px 12px 6px;opacity:1;width:auto;overflow:visible;}
   .sidebar.collapsed .nav-item{justify-content:flex-start;padding:10px 11px;}
   .sidebar.collapsed .nav-item .nav-ico{width:20px;font-size:14px;}
-  .sidebar.collapsed .sidebar-logout{justify-content:flex-start;padding:10px 11px;opacity:1;width:auto;overflow:visible;}
+  .sidebar.collapsed .sidebar-logout{justify-content:flex-start;padding:10px 11px;}
   .sidebar.collapsed .sidebar-logout i{font-size:14px;}
+  .sidebar.collapsed .nav-section{margin-top:14px;}
+  .sidebar.collapsed .nav-section:first-child{margin-top:0;}
   .sidebar.collapsed .nav-item::after{display:none;}
   .main-wrapper,.sidebar.collapsed ~ .main-wrapper{margin-left:0;}
   .hamburger{display:grid;}

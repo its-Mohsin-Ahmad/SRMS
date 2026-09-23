@@ -168,6 +168,10 @@
     renderNotifications();
     renderMessages();
 
+    /* Listeners bind once; re-login (logout -> sign in) only refreshes state above. */
+    if (init._wired) return;
+    init._wired = true;
+
     document.getElementById('notifications-btn').addEventListener('click', function () { toggleDropdown('notifications-btn', 'notifications-panel'); });
     document.getElementById('messages-btn').addEventListener('click', function () { toggleDropdown('messages-btn', 'messages-panel'); });
     document.getElementById('profile-trigger').addEventListener('click', function () { toggleDropdown('profile-trigger', 'profile-panel'); });
